@@ -23,6 +23,8 @@ $(document).ready(function () {
 
         ansAttempt = false;
 
+        $("#new-question").hide();
+
         quizWrite();
 
         Count = 30;
@@ -32,18 +34,17 @@ $(document).ready(function () {
         delayButtonAlert = setTimeout(notAttempted, 30000)
     }
 
-    $(document).on("click", ".answer", Attempted);
+    $(document).on("click",  Attempted);
 
     function countDown() {
 
         Count -= 1;
 
-        $("#timer").html('<h3> You have ' + Count + " seconds left</h3> ")
+        $("#timer").html(Count +" seconds left... ")
 
         return Count;
 
     }
-
 
     function Attempted() {
 
@@ -55,16 +56,16 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = parseInt($(this).val());
+        userChoice = ("click", ".answer");
+        console.log(userChoice);
 
         attempted += 1;
 
-        if (userChoice == quiz[i].ans) {
+        if (userChoice == quiz[i].choice4) {
 
             $("#message").html("correct!");
 
             correct += 1;
-
         }
         else {
 
@@ -77,7 +78,7 @@ $(document).ready(function () {
 
         displayStats();
 
-        displayAnsTime();
+        ansTime();
     }
 
     function notAttempted() {
@@ -102,22 +103,18 @@ $(document).ready(function () {
         }
     }
 
-    function displayAnsTime() {
+    function ansTime() {
 
         if (i < quiz.length) {
+
             newQuest = setTimeout(displayNewQuestion, 5000);
         }
+        
         else {
 
             $("#message").html("Game Over");
 
-            document.getElementById("question").style.opacity = "0.0";
-            document.getElementById("ans1").style.opacity = "0.0";
-            document.getElementById("ans2").style.opacity = "0.0";
-            document.getElementById("ans3").style.opacity = "0.0";
-            document.getElementById("ans4").style.opacity = "0.0";
-
-            $("#timer").hide();
+            $("#timer")
 
             return;
         }
@@ -135,15 +132,16 @@ $(document).ready(function () {
         this.choice4 = choice4;
         this.ans = ans;
         this.attempted = attempted;
+
     }
 
     function quizBuild() {
 
         quiz[0] = new questionSetup("How many sides on a square?", "3", "L7", "6", "4", 4, false);
-        quiz[1] = new questionSetup("How many sides on a octogon?", "7", "stop asking", "8", "3", 3, false);
+        quiz[1] = new questionSetup("How many sides on a octogon?", "7", "stop asking", "7", "8", 4, false);
         quiz[2] = new questionSetup("How many rhombuses are in a rhombohedron?", "11", "as many as it needs", "3", "6", 4, false);
-        quiz[3] = new questionSetup("How many sides does a triangle have?", "2", "that's private!", "3", "11", 3, false);
-        quiz[4] = new questionSetup("How many sides does a decagon have?", "10", "lots", "12", 1, false);
+        quiz[3] = new questionSetup("How many sides does a triangle have?", "2", "that's private!", "8", "3", 4, false);
+        quiz[4] = new questionSetup("How many sides does a decagon have?", "12", "lots", "2", "10", 4, false);
         quiz[5] = new questionSetup("How many sides does a hexagon have?", "8", "1", "hex", "6", 4, false);
         quiz[6] = new questionSetup("How many curves are contained in a polygon?", "2", "all of them", "6", "0", 4, false);
         quiz[7] = new questionSetup("How many 'types' of polygons are there?", "3", "too many", "12", "6", 4, false);
@@ -169,31 +167,7 @@ $(document).ready(function () {
         $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempted: " + attempted + '</h4>');
 
 
-}
+    }
 
-    /*function quizAns() {
 
-        if (quiz[i].ans == 1) {
-
-            quizAns = quiz[i].choice1;
-
-        } else if (quiz[i].ans == 2) {
-
-            quizAns = quiz[i].choice2;
-
-        } else if (quiz[i].ans == 3) {
-
-            quizAns = quiz[i].choice3;
-
-        } if (quiz[i].ans == 4) {
-
-            quizAns = quiz[i].choice4;
-        }
-        console.log(quizAns);
-
-        return quizAns;
-    }*/
-
-  
-
-    })     
+})     
