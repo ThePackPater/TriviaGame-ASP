@@ -19,13 +19,13 @@ $(document).ready(function () {
 
     function displayNewQuestion() {
 
-        if (i > 0) { clearTimeout(newQuest); }
-
-        ansAttempt = false;
-
         $("#new-question").hide();
 
         quizWrite();
+
+        if (i > 0) { clearTimeout(newQuest); }
+
+        ansAttempt = false;
 
         Count = 30;
 
@@ -34,7 +34,7 @@ $(document).ready(function () {
         delayButtonAlert = setTimeout(notAttempted, 30000)
     }
 
-    $(document).on("click", Attempted);
+    $(".answer").on("click", Attempted);
 
     function countDown() {
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = (attempted);
+        userChoice = ("click", attempted);
 
         console.log(userChoice);
 
@@ -77,9 +77,9 @@ $(document).ready(function () {
 
         if (missed === 10) {
 
-			location.replace("gameover.html");
+            location.replace("gameover.html");
 
-		}
+        }
 
 
         $(".stats").show();
@@ -88,7 +88,7 @@ $(document).ready(function () {
 
         ansTime();
 
-       
+
     }
 
     function notAttempted() {
