@@ -11,7 +11,7 @@ $(document).ready(function () {
     var newQuest;
     var ansAttempt;
 
-    quizBuild();
+    quizBuild()
 
     i = 0;
 
@@ -34,13 +34,13 @@ $(document).ready(function () {
         delayButtonAlert = setTimeout(notAttempted, 30000)
     }
 
-    $(document).on("click",  Attempted);
+    $(document).on("click", Attempted);
 
     function countDown() {
 
         Count -= 1;
 
-        $("#timer").html(Count +" seconds left... ")
+        $("#timer").html(Count + " seconds left...")
 
         return Count;
 
@@ -56,12 +56,13 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = ("click", ".answer");
+        userChoice = (attempted);
+
         console.log(userChoice);
 
         attempted += 1;
 
-        if (userChoice == quiz[i].choice4) {
+        if (userChoice == quiz[i].c) {
 
             $("#message").html("correct!");
 
@@ -69,7 +70,7 @@ $(document).ready(function () {
         }
         else {
 
-            $("#message").html("sorry!");
+            $("#message").html("Incorrect!");
 
             missed += 1;
         }
@@ -109,7 +110,7 @@ $(document).ready(function () {
 
             newQuest = setTimeout(displayNewQuestion, 5000);
         }
-        
+
         else {
 
             $("#message").html("Game Over");
@@ -123,30 +124,35 @@ $(document).ready(function () {
 
     }
 
-    function questionSetup(question, choice1, choice2, choice3, choice4, ans, attempted) {
+
+
+    function questionSetup(question, a, b, c, d, attempted) {
 
         this.question = question;
-        this.choice1 = choice1;
-        this.choice2 = choice2;
-        this.choice3 = choice3;
-        this.choice4 = choice4;
-        this.ans = ans;
+        this.a = a;
+        this.b = b;
+        this.c = c;
+        this.d = d;
         this.attempted = attempted;
 
     }
 
     function quizBuild() {
 
-        quiz[0] = new questionSetup("How many sides on a square?", "3", "L7", "6", "4", 4, false);
-        quiz[1] = new questionSetup("How many sides on a octogon?", "7", "stop asking", "7", "8", 4, false);
-        quiz[2] = new questionSetup("How many rhombuses are in a rhombohedron?", "11", "as many as it needs", "3", "6", 4, false);
-        quiz[3] = new questionSetup("How many sides does a triangle have?", "2", "that's private!", "8", "3", 4, false);
-        quiz[4] = new questionSetup("How many sides does a decagon have?", "12", "lots", "2", "10", 4, false);
-        quiz[5] = new questionSetup("How many sides does a hexagon have?", "8", "1", "hex", "6", 4, false);
-        quiz[6] = new questionSetup("How many curves are contained in a polygon?", "2", "all of them", "6", "0", 4, false);
-        quiz[7] = new questionSetup("How many 'types' of polygons are there?", "3", "too many", "12", "6", 4, false);
-        quiz[8] = new questionSetup("How many sides does a Quadilateral have?", "8", "2", "ocho", "4", 4, false);
-        quiz[9] = new questionSetup("If a chicken and a half, could lay an egg and a half, in a day in a half, how long would it take a one legged monkey to kick all the seeds out of a dill pickle?", "2", "8", "13, cause icecream has no bones", "4", 4, false);
+        quiz[0] = new questionSetup("In what U.S. state is it illegal to peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
+        quiz[1] = new questionSetup("In what U.S. state is it illegal to drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
+        quiz[2] = new questionSetup("In what U.S. state is it illegal to swear in front of a corpse?", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
+        quiz[3] = new questionSetup("In what U.S. city is it illegal to sell Cornflakes on a Sunday?", "Huntsville, Alabama", "Syracuse, New York", "Columbus, Ohio", "Bangor, Maine", false);
+        quiz[4] = new questionSetup("In what U.S. state is it illegal to sing while wearing a swimsuit?", "California", "Georgia", "Florida", "Texas", false);
+        quiz[5] = new questionSetup("In what U.S. state is it illegal to play the Randy Newman song 'Short People' ?", "Florida", "South Dakota", "Maryland", "New England", false);
+        quiz[6] = new questionSetup("In what U.S. state is it illegal to mistreat an oyster ?", "New England", "Delaware", "Maryland", "New York", false);
+        quiz[7] = new questionSetup("In what U.S. state is it illegal to take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
+        quiz[8] = new questionSetup("In what U.S. state is it illegal to serve a piece without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
+        quiz[9] = new questionSetup("In what U.S. state is it illegal to shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
+        quiz[10] = new questionSetup("In what U.S. state is it illegal to feed garbage to a pig you don't own without a permit?", "North Dakota", "Washington", "Arizona", "Montana", false);
+        quiz[11] = new questionSetup("In what U.S. state is it illegal to eat frogs that die during a jumping contest?", "Connecticut", "Washington", "California", "Alabama", false);
+        quiz[12] = new questionSetup("In what U.S. state is it illegal to fall asleep in a cheese shop ?", "Maine", "Indiana", "Illinois", "Wisconsin", false)
+        quiz[13] = new questionSetup("In what U.S. state is it illegal to be tipsy on a train?", "New Hampshire", "Washington", "Michigan", "Vermont", false)
 
 
         return quiz
@@ -155,19 +161,19 @@ $(document).ready(function () {
     function quizWrite() {
 
         $("#question").empty().html(quiz[i].question);
-        $("#ans1").empty().html(quiz[i].choice1);
-        $("#ans2").empty().html(quiz[i].choice2);
-        $("#ans3").empty().html(quiz[i].choice3);
-        $("#ans4").empty().html(quiz[i].choice4);
+        $("#ans1").empty().html(quiz[i].a);
+        $("#ans2").empty().html(quiz[i].b);
+        $("#ans3").empty().html(quiz[i].c);
+        $("#ans4").empty().html(quiz[i].d);
 
     }
 
     function displayStats() {
 
-        $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempted: " + attempted + '</h4>');
+        $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempte " + attempted + '</h4>');
 
 
     }
 
 
-})     
+})   
