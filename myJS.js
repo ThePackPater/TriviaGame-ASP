@@ -75,11 +75,20 @@ $(document).ready(function () {
             missed += 1;
         }
 
+        if (missed === 10) {
+
+			location.replace("gameover.html");
+
+		}
+
+
         $(".stats").show();
 
         displayStats();
 
         ansTime();
+
+       
     }
 
     function notAttempted() {
@@ -114,6 +123,8 @@ $(document).ready(function () {
         else {
 
             $("#message").html("Game Over");
+
+            location.replace("gameover.html");
 
             $("#timer")
 
