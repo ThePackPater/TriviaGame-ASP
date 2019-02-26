@@ -56,17 +56,23 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = ("click", attempted);
+        userChoice = ($(this));
 
-        console.log(userChoice);
+        console.log(userChoice, i);
 
         attempted += 1;
 
-        if (userChoice == quiz[i].c) {
+        if (userChoice === quiz[i].c) {
 
-            $("#message").html("correct!");
+            $("#message").html("Correct!");
 
             correct += 1;
+
+            if (correct === 10) {
+
+                location.replace("goodjob.html");
+    
+            }
         }
         else {
 
@@ -117,7 +123,7 @@ $(document).ready(function () {
 
         if (i < quiz.length) {
 
-            newQuest = setTimeout(displayNewQuestion, 5000);
+            newQuest = setTimeout(displayNewQuestion, 500);
         }
 
         else {
@@ -158,7 +164,7 @@ $(document).ready(function () {
         quiz[5] = new questionSetup("In what U.S. state is it illegal to play the Randy Newman song 'Short People' ?", "Florida", "South Dakota", "Maryland", "New England", false);
         quiz[6] = new questionSetup("In what U.S. state is it illegal to mistreat an oyster ?", "New England", "Delaware", "Maryland", "New York", false);
         quiz[7] = new questionSetup("In what U.S. state is it illegal to take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
-        quiz[8] = new questionSetup("In what U.S. state is it illegal to serve a piece without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
+        quiz[8] = new questionSetup("In what U.S. state is it illegal to serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
         quiz[9] = new questionSetup("In what U.S. state is it illegal to shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
         quiz[10] = new questionSetup("In what U.S. state is it illegal to feed garbage to a pig you don't own without a permit?", "North Dakota", "Washington", "Arizona", "Montana", false);
         quiz[11] = new questionSetup("In what U.S. state is it illegal to eat frogs that die during a jumping contest?", "Connecticut", "Washington", "California", "Alabama", false);
