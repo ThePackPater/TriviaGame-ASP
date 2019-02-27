@@ -4,8 +4,7 @@ $(document).ready(function () {
     var quiz = [];
     var Count;
     var correct = 0;
-    var missed = 0;
-    var attempted = 0;
+    var Incorrect = 0;
     var intervalTimer;
     var delayButtonAlert;
     var newQuest;
@@ -57,8 +56,6 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        attempted += 1;
-
         userChoice = $(this);
 
         console.log(userChoice);
@@ -82,10 +79,10 @@ $(document).ready(function () {
 
             $("#message").html("Incorrect!");
 
-            missed += 1;
+            Incorrect += 1;
         }
 
-        if (missed === 10) {
+        if (Incorrect === 10) {
 
             location.replace("gameover.html");
 
@@ -107,9 +104,9 @@ $(document).ready(function () {
 
             clearTimeout(intervalTimer);
 
-            missed += 1;
+            Incorrect += 1;
 
-            if (missed === 10) {
+            if (Incorrect === 10) {
 
                 location.replace("gameover.html");
 
@@ -184,7 +181,7 @@ $(document).ready(function () {
 
         function displayStats() {
 
-        $(".stats").html("<h4> Correct: " + correct + "<br>" + "Incorrect: " + missed + "</h4>");
+        $(".stats").html("<h4> Correct: " + correct + "<br>" + "Incorrect: " + Incorrect + "</h4>");
 
 
     }
