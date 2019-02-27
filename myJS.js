@@ -9,6 +9,7 @@ $(document).ready(function () {
     var intervalTimer;
     var delayButtonAlert;
     var newQuest;
+    var correctAns;
     var ansAttempt;
 
     quizBuild()
@@ -56,13 +57,15 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = ($(this));
+        userChoice = $(this);
 
-        console.log(userChoice, i);
+        console.log(userChoice);
 
         attempted += 1;
 
-        if (userChoice === quiz[i].c) {
+        correctAns === quiz[i].c;
+
+        if (userChoice === correctAns) {
 
             $("#message").html("Correct!");
 
@@ -71,7 +74,7 @@ $(document).ready(function () {
             if (correct === 10) {
 
                 location.replace("goodjob.html");
-    
+
             }
         }
         else {
@@ -93,9 +96,24 @@ $(document).ready(function () {
         displayStats();
 
         ansTime();
-
-
+  
     }
+
+    /* tirying to disable buttons after one click
+    
+    $(".answer").on("click", disabledBTN);
+
+    function disabledBTN() {
+
+        $("#ans1").attr("disabled", true);
+
+        $("#ans2").attr("disabled", true);
+
+        $("#ans3").attr("disabled", true);
+
+        $("#ans4").attr("disabled", true);
+
+    }*/
 
     function notAttempted() {
 
