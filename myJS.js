@@ -107,11 +107,19 @@ $(document).ready(function () {
 
         $("#ans1").attr("disabled", true);
 
+        $("#ans1").removeAttr("disabled");
+
         $("#ans2").attr("disabled", true);
+
+        $("#ans2").removeAttr("disabled");
 
         $("#ans3").attr("disabled", true);
 
+        $("#ans3").removeAttr("disabled");
+
         $("#ans4").attr("disabled", true);
+
+        $("#ans4").removeAttr("disabled");
 
     }*/
 
