@@ -28,11 +28,11 @@ $(document).ready(function () {
 
         ansAttempt = false;
 
-        Count = 30;
+        Count = 10;
 
         intervalTimer = setInterval(countDown, 1000)
 
-        delayButtonAlert = setTimeout(notAttempted, 30000)
+        delayButtonAlert = setTimeout(notAttempted, 10000)
     }
 
     $(".answer").on("click", Attempted);
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
         attempted += 1;
 
-        correctAns === quiz[i].c;
+        correctAns = (quiz[i].c);
 
         if (userChoice === correctAns) {
 
@@ -77,6 +77,7 @@ $(document).ready(function () {
 
             }
         }
+
         else {
 
             $("#message").html("Incorrect!");
@@ -90,38 +91,13 @@ $(document).ready(function () {
 
         }
 
-
         $(".stats").show();
 
         displayStats();
 
         ansTime();
-  
+
     }
-
-    /* tirying to disable buttons after one click
-    
-    $(".answer").on("click", disabledBTN);
-
-    function disabledBTN() {
-
-        $("#ans1").attr("disabled", true);
-
-        $("#ans1").removeAttr("disabled");
-
-        $("#ans2").attr("disabled", true);
-
-        $("#ans2").removeAttr("disabled");
-
-        $("#ans3").attr("disabled", true);
-
-        $("#ans3").removeAttr("disabled");
-
-        $("#ans4").attr("disabled", true);
-
-        $("#ans4").removeAttr("disabled");
-
-    }*/
 
     function notAttempted() {
 
@@ -134,40 +110,36 @@ $(document).ready(function () {
 
             missed += 1;
 
+            if (missed === 10) {
+
+                location.replace("gameover.html");
+    
+            }
+
             $(".stats").show();
 
             displayStats();
+
+            ansTime();
+
         }
 
-        else {
-
-            return
-        }
+        /* else {
+ 
+             return
+         }*/
     }
 
     function ansTime() {
 
         if (i < quiz.length) {
 
-            newQuest = setTimeout(displayNewQuestion, 500);
-        }
-
-        else {
-
-            $("#message").html("Game Over");
-
-            location.replace("gameover.html");
-
-            $("#timer")
-
-            return;
+            newQuest = setTimeout(displayNewQuestion, 300);
         }
 
         i++;
 
     }
-
-
 
     function questionSetup(question, a, b, c, d, attempted) {
 
@@ -213,7 +185,7 @@ $(document).ready(function () {
 
     function displayStats() {
 
-        $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempte " + attempted + '</h4>');
+        $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempts " + attempted + '</h4>');
 
 
     }
