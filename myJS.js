@@ -57,11 +57,11 @@ $(document).ready(function () {
 
         $("#message").show();
 
+        attempted += 1;
+
         userChoice = $(this);
 
         console.log(userChoice);
-
-        attempted += 1;
 
         correctAns = (quiz[i].c);
 
@@ -89,18 +89,17 @@ $(document).ready(function () {
 
             location.replace("gameover.html");
 
-        }
-
-        $(".stats").show();
-
-        displayStats();
-
-        ansTime();
-
     }
 
-    function notAttempted() {
+    $(".stats").show();
 
+    displayStats();
+
+    ansTime();
+
+}
+
+        function notAttempted() {
 
         if (ansAttempt != true) {
 
@@ -113,7 +112,7 @@ $(document).ready(function () {
             if (missed === 10) {
 
                 location.replace("gameover.html");
-    
+
             }
 
             $(".stats").show();
@@ -124,13 +123,9 @@ $(document).ready(function () {
 
         }
 
-        /* else {
- 
-             return
-         }*/
     }
 
-    function ansTime() {
+        function ansTime() {
 
         if (i < quiz.length) {
 
@@ -141,7 +136,7 @@ $(document).ready(function () {
 
     }
 
-    function questionSetup(question, a, b, c, d, attempted) {
+        function questionSetup(question, a, b, c, d, attempted){
 
         this.question = question;
         this.a = a;
@@ -150,32 +145,34 @@ $(document).ready(function () {
         this.d = d;
         this.attempted = attempted;
 
-    }
+        }
 
-    function quizBuild() {
+        function quizBuild() {
 
-        quiz[0] = new questionSetup("In what U.S. state is it illegal to peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
-        quiz[1] = new questionSetup("In what U.S. state is it illegal to drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
-        quiz[2] = new questionSetup("In what U.S. state is it illegal to swear in front of a corpse?", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
-        quiz[3] = new questionSetup("In what U.S. city is it illegal to sell Cornflakes on a Sunday?", "Huntsville, Alabama", "Syracuse, New York", "Columbus, Ohio", "Bangor, Maine", false);
-        quiz[4] = new questionSetup("In what U.S. state is it illegal to sing while wearing a swimsuit?", "California", "Georgia", "Florida", "Texas", false);
-        quiz[5] = new questionSetup("In what U.S. state is it illegal to play the Randy Newman song 'Short People' ?", "Florida", "South Dakota", "Maryland", "New England", false);
-        quiz[6] = new questionSetup("In what U.S. state is it illegal to mistreat an oyster ?", "New England", "Delaware", "Maryland", "New York", false);
-        quiz[7] = new questionSetup("In what U.S. state is it illegal to take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
-        quiz[8] = new questionSetup("In what U.S. state is it illegal to serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
-        quiz[9] = new questionSetup("In what U.S. state is it illegal to shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
-        quiz[10] = new questionSetup("In what U.S. state is it illegal to feed garbage to a pig you don't own without a permit?", "North Dakota", "Washington", "Arizona", "Montana", false);
-        quiz[11] = new questionSetup("In what U.S. state is it illegal to eat frogs that die during a jumping contest?", "Connecticut", "Washington", "California", "Alabama", false);
-        quiz[12] = new questionSetup("In what U.S. state is it illegal to fall asleep in a cheese shop ?", "Maine", "Indiana", "Illinois", "Wisconsin", false)
-        quiz[13] = new questionSetup("In what U.S. state is it illegal to be tipsy on a train?", "New Hampshire", "Washington", "Michigan", "Vermont", false)
+        quiz[0] = new questionSetup("peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
+        quiz[1] = new questionSetup(" drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
+        quiz[2] = new questionSetup(" swear in front of a corpse?", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
+        quiz[3] = new questionSetup(" sell Cornflakes on a Sunday?", "Alabama", "New York", "Ohio (specifically Columbus)", "Maine", false);
+        quiz[4] = new questionSetup(" sing while wearing a swimsuit?", "California", "Georgia", "Florida", "Texas", false);
+        quiz[5] = new questionSetup(" play the Randy Newman song 'Short People' ?", "Florida", "South Dakota", "Maryland", "New England", false);
+        quiz[6] = new questionSetup(" mistreat an oyster ?", "New England", "Delaware", "Maryland", "New York", false);
+        quiz[7] = new questionSetup(" take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
+        quiz[8] = new questionSetup(" serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
+        quiz[9] = new questionSetup(" shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
+        quiz[10] = new questionSetup(" feed garbage to a pig you don't own without a permit?", "North Dakota", "Washington", "Arizona", "Montana", false);
+        quiz[11] = new questionSetup(" eat frogs that die during a jumping contest?", "Connecticut", "Washington", "California", "Alabama", false);
+        quiz[12] = new questionSetup(" fall asleep in a cheese shop ?", "Maine", "Indiana", "Illinois", "Wisconsin", false)
+        quiz[13] = new questionSetup(" be tipsy on a train?", "New Hampshire", "Washington", "Michigan", "Vermont", false)
 
 
         return quiz
     }
 
-    function quizWrite() {
+        function quizWrite() {
 
-        $("#question").empty().html(quiz[i].question);
+            //for (i = 0; i < quiz.length; i++);
+
+        $("#question").empty().html("In what U.S. state is it illegal to " + quiz[i].question);
         $("#ans1").empty().html(quiz[i].a);
         $("#ans2").empty().html(quiz[i].b);
         $("#ans3").empty().html(quiz[i].c);
@@ -183,12 +180,12 @@ $(document).ready(function () {
 
     }
 
-    function displayStats() {
+        function displayStats() {
 
-        $(".stats").html("<h4> Correct: " + correct + '<br>' + "Incorrect: " + missed + '<br>' + "Attempts " + attempted + '</h4>');
+        $(".stats").html("<h4> Correct: " + correct + "<br>" + "Incorrect: " + missed + "</h4>");
 
 
     }
 
 
-})   
+    });   
