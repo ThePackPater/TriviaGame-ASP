@@ -75,28 +75,30 @@ $(document).ready(function () {
             }
         }
 
-        else {
+        if (userChoice !== correctAns) {
 
             $("#message").html("Incorrect!");
 
             Incorrect += 1;
+
+
+            if (Incorrect === 10) {
+
+                location.replace("gameover.html");
+
+            }
+
         }
 
-        if (Incorrect === 10) {
+        $(".stats").show();
 
-            location.replace("gameover.html");
+        displayStats();
+
+        ansTime();
 
     }
 
-    $(".stats").show();
-
-    displayStats();
-
-    ansTime();
-
-}
-
-        function notAttempted() {
+    function notAttempted() {
 
         if (ansAttempt != true) {
 
@@ -124,19 +126,19 @@ $(document).ready(function () {
 
     }
 
-        function ansTime() {
+    function ansTime() {
 
         if (i < quiz.length) {
 
             newQuest = setTimeout(displayNewQuestion, 300);
         }
-        
+
         i++;
     }
 
-        
 
-    function questionSetup(question, a, b, c, d, attempted){
+
+    function questionSetup(question, a, b, c, d, attempted) {
 
         this.question = question;
         this.a = a;
@@ -145,11 +147,9 @@ $(document).ready(function () {
         this.d = d;
         this.attempted = attempted;
 
-        }
+    }
 
-        function quizBuild() {
-
-         //for (i = 0; i < quiz.length; i++);
+    function quizBuild() {
 
         quiz[0] = new questionSetup("peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
         quiz[1] = new questionSetup(" drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
@@ -161,14 +161,12 @@ $(document).ready(function () {
         quiz[7] = new questionSetup(" take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
         quiz[8] = new questionSetup(" serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
         quiz[9] = new questionSetup(" shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
-        
+
         return quiz
     }
-    
 
-        function quizWrite() {
+    function quizWrite() {
 
-           
         $("#question").empty().html("In what U.S. state is it illegal to " + quiz[i].question);
         $("#ans1").empty().html(quiz[i].a);
         $("#ans2").empty().html(quiz[i].b);
@@ -177,12 +175,10 @@ $(document).ready(function () {
 
     }
 
-        function displayStats() {
+    function displayStats() {
 
         $(".stats").html("<h4> Correct: " + correct + "<br>" + "Incorrect: " + Incorrect + "</h4>");
 
-
     }
 
-
-    });   
+});   
