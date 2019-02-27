@@ -115,6 +115,8 @@ $(document).ready(function () {
 
             }
 
+            $("#message").html("Incorrect!");
+
             $(".stats").show();
 
             displayStats();
@@ -131,9 +133,8 @@ $(document).ready(function () {
 
             newQuest = setTimeout(displayNewQuestion, 300);
         }
-
+        
         i++;
-
     }
 
         function questionSetup(question, a, b, c, d, attempted){
@@ -148,6 +149,8 @@ $(document).ready(function () {
         }
 
         function quizBuild() {
+
+         //for (i = 0; i < quiz.length; i++);
 
         quiz[0] = new questionSetup("peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
         quiz[1] = new questionSetup(" drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
@@ -170,8 +173,7 @@ $(document).ready(function () {
 
         function quizWrite() {
 
-            //for (i = 0; i < quiz.length; i++);
-
+           
         $("#question").empty().html("In what U.S. state is it illegal to " + quiz[i].question);
         $("#ans1").empty().html(quiz[i].a);
         $("#ans2").empty().html(quiz[i].b);
