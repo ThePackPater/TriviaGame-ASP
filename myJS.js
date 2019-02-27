@@ -134,7 +134,9 @@ $(document).ready(function () {
         i++;
     }
 
-        function questionSetup(question, a, b, c, d, attempted){
+        
+
+    function questionSetup(question, a, b, c, d, attempted){
 
         this.question = question;
         this.a = a;
@@ -159,14 +161,10 @@ $(document).ready(function () {
         quiz[7] = new questionSetup(" take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
         quiz[8] = new questionSetup(" serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
         quiz[9] = new questionSetup(" shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
-        quiz[10] = new questionSetup(" feed garbage to a pig you don't own without a permit?", "North Dakota", "Washington", "Arizona", "Montana", false);
-        quiz[11] = new questionSetup(" eat frogs that die during a jumping contest?", "Connecticut", "Washington", "California", "Alabama", false);
-        quiz[12] = new questionSetup(" fall asleep in a cheese shop ?", "Maine", "Indiana", "Illinois", "Wisconsin", false)
-        quiz[13] = new questionSetup(" be tipsy on a train?", "New Hampshire", "Washington", "Michigan", "Vermont", false)
-
-
+        
         return quiz
     }
+    
 
         function quizWrite() {
 
