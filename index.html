@@ -23,12 +23,31 @@
             background-size: cover;
             font-family: 'Anton', sans-serif;
             color: antiquewhite;
-            text-shadow: 2px 2px navy;
+            text-shadow: 4px 4px navy;
         }
 
         .jumbotron {
 
             background: none;
+
+        }
+
+        #ans3 {
+
+            color: white;
+        }
+
+        .answer {
+
+            background: url("cherrywood.jpg");
+
+
+        }
+
+        #new-question {
+
+            background: url("cherrywood.jpg");
+
 
         }
     </Style>
@@ -41,23 +60,22 @@
         <h1 class="display-4">Time for a Silly laws Quiz?!</h1>
         <h2 class="lead">You will be asked 10 questions. You will have 10 seconds for each question. When you click the
             corrrect answer the next question appears and the timer restarts. </h2>
-        <button id="new-question" type="button" class="btn btn-info btn-lg">New Question</button>
-        <hr class="my-4">
+        <button id="new-question" type="button" class="btn btn-info btn-lg">Get Started</button>
+        <p class="stats"><b></b></p>
         <h2 id="question"><b>This is the space where the question will appear!</b></h2>
         <hr class="my-4">
         <button id="ans1" type="button" class="btn btn-primary btn-lg btn-block answer">Answer 1</button>
         <button id="ans2" type="button" class="btn btn-danger btn-lg btn-block answer">Answer 2</button>
         <button id="ans3" type="button" class="btn btn-warning btn-lg btn-block answer">Answer 3</button>
         <button id="ans4" type="button" class="btn btn-success btn-lg btn-block answer">Answer 4</button>
-    </div>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 id="timer" class="display-4"></h1>
-            <p id="message" class="lead"></p>
-            <p class="stats"><b></b></p>
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h1 id="timer" class="display-4"></h1>
+                <h2 id="message" class="display-4"></h2>
+            </div>
         </div>
     </div>
-
 
 
 </body>

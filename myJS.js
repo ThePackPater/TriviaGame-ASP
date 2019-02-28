@@ -10,6 +10,7 @@ $(document).ready(function () {
     var newQuest;
     var correctAns;
     var ansAttempt;
+    var attempted = 0;
 
     quizBuild()
 
@@ -46,6 +47,8 @@ $(document).ready(function () {
 
     }
 
+
+
     function Attempted() {
 
         clearTimeout(delayButtonAlert);
@@ -58,38 +61,29 @@ $(document).ready(function () {
 
         userChoice = $(this).text();
 
+        attempted += 1;
 
-        console.log(userChoice);
+        if (attempted === 10) {
+
+            location.replace("gameover.html");
+
+        }
 
         correctAns = quiz[i].c;
 
-console.log(userChoice)
-
         if (userChoice === correctAns) {
-            
-            $("#message").html("Correct!");
 
+            $("#message").html("Correct it is illegal to " + quiz[i].question + " in " + correctAns + ".");
+            console.log(correctAns);
             correct += 1;
 
-            if (correct === 10) {
-
-                location.replace("goodjob.html");
-
-            }
         }
 
         if (userChoice !== correctAns) {
 
-            $("#message").html("Incorrect!");
+            $("#message").html("Incorrect it is illegal to " + quiz[i].question + " in " + correctAns + ".");
 
             Incorrect += 1;
-
-
-            if (Incorrect === 10) {
-
-                location.replace("gameover.html");
-
-            }
 
         }
 
@@ -111,13 +105,15 @@ console.log(userChoice)
 
             Incorrect += 1;
 
-            if (Incorrect === 10) {
+            attempted += 1;
+
+            if (attempted === 10) {
 
                 location.replace("gameover.html");
 
             }
 
-            $("#message").html("Incorrect!");
+            $("#message").html("Incorrect it is illegal to " + quiz[i].question + " in " + correctAns + ".");
 
             $(".stats").show();
 
@@ -152,23 +148,23 @@ console.log(userChoice)
 
     function quizBuild() {
 
-        quiz[0] = new questionSetup("peel an onion in a hotel room?", "Florida", "Virginia", "California", "New York", false);
-        quiz[1] = new questionSetup(" drive while you're asleep?", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
-        quiz[2] = new questionSetup(" swear in front of a corpse?", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
-        quiz[3] = new questionSetup(" sell Cornflakes on a Sunday?", "Alabama", "New York", "Ohio (specifically Columbus)", "Maine", false);
-        quiz[4] = new questionSetup(" sing while wearing a swimsuit?", "California", "Georgia", "Florida", "Texas", false);
-        quiz[5] = new questionSetup(" play the Randy Newman song 'Short People' ?", "Florida", "South Dakota", "Maryland", "New England", false);
-        quiz[6] = new questionSetup(" mistreat an oyster ?", "New England", "Delaware", "Maryland", "New York", false);
-        quiz[7] = new questionSetup(" take a picture of a rabbit in June?", "Idaho", "Alaska", "Wyoming", "Kansas", false);
-        quiz[8] = new questionSetup(" serve a piece of apple pie without cheese ?", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
-        quiz[9] = new questionSetup(" shove a moose from an airplane?", "North Dakota", "Washington", "Alaska", "Montana", false);
+        quiz[0] = new questionSetup("peel an onion in a hotel room", "Florida", "Virginia", "California", "New York", false);
+        quiz[1] = new questionSetup(" drive while you're asleep", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
+        quiz[2] = new questionSetup(" swear in front of a corpse", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
+        quiz[3] = new questionSetup(" sell Cornflakes on a Sunday", "Alabama", "New York", "Ohio (specifically Columbus)", "Maine", false);
+        quiz[4] = new questionSetup(" sing while wearing a swimsuit", "California", "Georgia", "Florida", "Texas", false);
+        quiz[5] = new questionSetup(" play the Randy Newman song 'Short People' ", "Florida", "South Dakota", "Maryland", "New England", false);
+        quiz[6] = new questionSetup(" mistreat an oyster ", "New England", "Delaware", "Maryland", "New York", false);
+        quiz[7] = new questionSetup(" take a picture of a rabbit in June", "Idaho", "Alaska", "Wyoming", "Kansas", false);
+        quiz[8] = new questionSetup(" serve a piece of apple pie without cheese ", "Minesota", "Nebraska", "Wisconsin", "South Dakota", false);
+        quiz[9] = new questionSetup(" shove a moose from an airplane", "North Dakota", "Washington", "Alaska", "Montana", false);
 
         return quiz
     }
 
     function quizWrite() {
 
-        $("#question").empty().html("In what U.S. state is it illegal to " + quiz[i].question);
+        $("#question").empty().html("In what U.S. state is it illegal to " + quiz[i].question + "??");
         $("#ans1").empty().html(quiz[i].a);
         $("#ans2").empty().html(quiz[i].b);
         $("#ans3").empty().html(quiz[i].c);
@@ -178,7 +174,7 @@ console.log(userChoice)
 
     function displayStats() {
 
-        $(".stats").html("<h4> Correct: " + correct + "<br>" + "Incorrect: " + Incorrect + "</h4>");
+        $(".stats").html("<h4> Correct: " + correct + "   Incorrect: " + Incorrect + /*+ "Attempted: " + attempted*/" </h4>");
 
     }
 
