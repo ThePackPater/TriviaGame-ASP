@@ -56,14 +56,17 @@ $(document).ready(function () {
 
         $("#message").show();
 
-        userChoice = $(this);
+        userChoice = $(this).text();
+
 
         console.log(userChoice);
 
-        correctAns = (quiz[i].c);
+        correctAns = quiz[i].c;
+
+console.log(userChoice)
 
         if (userChoice === correctAns) {
-
+            
             $("#message").html("Correct!");
 
             correct += 1;
@@ -135,8 +138,6 @@ $(document).ready(function () {
 
         i++;
     }
-
-
 
     function questionSetup(question, a, b, c, d, attempted) {
 
