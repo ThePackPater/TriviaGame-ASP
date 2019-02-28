@@ -150,7 +150,7 @@ $(document).ready(function () {
 
         quiz[0] = new questionSetup("peel an onion in a hotel room", "Florida", "Virginia", "California", "New York", false);
         quiz[1] = new questionSetup(" drive while you're asleep", "Wyoming", "Louisianna", "Tennessee", "New Hampshire", false);
-        quiz[2] = new questionSetup(" swear in front of a corpse", "Massacucetts", "Arkansas", "Texas", "Montatna", false);
+        quiz[2] = new questionSetup(" swear in front of a corpse", "Massacucetts", "Arkansas", "Texas", "Montana", false);
         quiz[3] = new questionSetup(" sell Cornflakes on a Sunday", "Alabama", "New York", "Ohio (specifically Columbus)", "Maine", false);
         quiz[4] = new questionSetup(" sing while wearing a swimsuit", "California", "Georgia", "Florida", "Texas", false);
         quiz[5] = new questionSetup(" play the Randy Newman song 'Short People' ", "Florida", "South Dakota", "Maryland", "New England", false);
